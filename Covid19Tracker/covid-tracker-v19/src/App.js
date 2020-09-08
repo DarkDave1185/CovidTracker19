@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
 /* add MATERIAL UI functions */
 import {
   MenuItem,
@@ -12,13 +11,15 @@ import InfoBox from "./InfoBox";
 import Map from "./Map";
 import Table from "./Table";
 import "./App.css";
+import { sortData } from "./utilities";
+import LineGraph from "./LineGraph";
 
 function App() {
   /* //STATE = HOW TO WRITE VARIABLES IN react// */
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
-  const [tableData, setTableData] = useState({});
+  const [tableData, setTableData] = useState([]);
   //USEEFFECT = runs code based on condition
   //will run once when component loads
   useEffect(() => {
@@ -38,7 +39,8 @@ function App() {
             name: country.country,
             value: country.countryInfo.iso3,
           }));
-          setTableData(data);
+          const sortedData = sortData(data);
+          setTableData(sortedData);
           setCountries(countries);
         });
     };
@@ -111,19 +113,19 @@ function App() {
       </div>
       {/*Table*/}
       {/*Graph*/}
-
+      {/*Map*/}
+      <div class="app-right">
+        <Map />
+      </div>
       <Card class="app-left">
         <CardContent>
           <h3>LIVE</h3>
           <h2>Cases By Country</h2>
           <Table countries={tableData} />
           <h2>New Global Cases</h2>
+          <LineGraph />
         </CardContent>
       </Card>
-      {/*Map*/}
-      <div class="app-right">
-        <Map />
-      </div>
     </div>
   );
 }
