@@ -116,7 +116,7 @@ function App() {
         <CardContent>
           <h3>LIVE</h3>
           <h2>Cases By Country</h2>
-          <Table />
+          <Table countries={tableData} />
           <h2>New Global Cases</h2>
         </CardContent>
       </Card>
