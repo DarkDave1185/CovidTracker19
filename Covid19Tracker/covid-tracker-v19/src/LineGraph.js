@@ -12,6 +12,21 @@ function LineGraph() {
       });
   }, []);
 
+  const buildChartData = (data) => {
+    const chartData = [];
+    let lastDataPoint;
+    data.cases.forEach((date) => {
+      if (lastDataPoint) {
+        const newDataPoint = {
+          x: date,
+          y: data["cases"][date] - lastDataPoint,
+        };
+        chartData.push(newDataPoint);
+      }
+      lastDataPoint = data["cases"][date];
+    });
+    return chartData;
+  };
   return (
     <div>
       <h3>LineGraph Here</h3>
