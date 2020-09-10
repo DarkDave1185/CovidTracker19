@@ -4,7 +4,7 @@ import numeral from "numeral";
 
 const options = {
   legend: {
-    display: false,
+    display: true,
   },
   elements: {
     point: {
@@ -27,7 +27,7 @@ const options = {
       {
         type: "time",
         time: {
-          format: "MM//DD/YY",
+          format: "MM/DD/YY",
           tooltipFormat: "ll",
         },
       },
@@ -35,7 +35,7 @@ const options = {
     yAxes: [
       {
         gridLines: {
-          display: true,
+          display: false,
         },
         ticks: {
           callback: function (value, index, values) {
@@ -69,12 +69,12 @@ function LineGraph({ casesType }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=120")
+      await fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=28")
         .then((response) => {
           return response.json();
         })
         .then((data) => {
-          const chartData = buildChartData(data, "cases");
+          let chartData = buildChartData(data, "cases");
           setData(chartData);
         });
     };
@@ -86,12 +86,14 @@ function LineGraph({ casesType }) {
       <h3>LineGraph Here</h3>
       {data?.length > 0 && (
         <Line
+          width={100}
+          height={50}
           data={{
             datasets: [
               {
-                data: data,
-                borderColor: "red",
                 backgroundColor: "#cc1034",
+                borderColor: "orangered",
+                data: data,
               },
             ],
           }}

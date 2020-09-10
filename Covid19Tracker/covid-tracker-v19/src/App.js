@@ -13,6 +13,8 @@ import Table from "./Table";
 import "./App.css";
 import { sortData } from "./utilities";
 import LineGraph from "./LineGraph";
+import "leaflet/dist/leaflet.css";
+import numeral from "numeral";
 
 function App() {
   /* //STATE = HOW TO WRITE VARIABLES IN react// */
@@ -20,6 +22,13 @@ function App() {
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
+  const [mapCenter, setMapCenter] = useState({
+    lat: 37.09024,
+    lng: -95.712891,
+  });
+  const [mapZoom, setMapZoom] = useState(3);
+  const [mapCountries, setMapCountries] = useState({});
+  const [casesType, setCasesType] = useState("cases");
   //USEEFFECT = runs code based on condition
   //will run once when component loads
   useEffect(() => {
@@ -36,11 +45,12 @@ function App() {
         .then((response) => response.json())
         .then((data) => {
           const countries = data.map((country) => ({
-            name: country.country,
-            value: country.countryInfo.iso3,
+            name: country.country, //UNITED STATES,UNITED KINGDOM,FRANCE
+            value: country.countryInfo.iso3, //USA,UK,FR
           }));
           const sortedData = sortData(data);
           setTableData(sortedData);
+          setMapCountries(data);
           setCountries(countries);
         });
     };
@@ -64,6 +74,8 @@ function App() {
         setCountry(countryCode);
         //get all data for country
         setCountryInfo(data);
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        setMapZoom(5);
       });
   };
   console.log("country info pulled.", countryInfo);
@@ -115,7 +127,7 @@ function App() {
       {/*Graph*/}
       {/*Map*/}
       <div class="app-right">
-        <Map />
+        <Map center={mapCenter} zoom={mapZoom} countries={mapCountries} />
       </div>
       <Card class="app-left">
         <CardContent>
