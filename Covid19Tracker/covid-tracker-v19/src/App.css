@@ -13,6 +13,8 @@ h4 {
 
 .app {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   padding: 20px;
 }
@@ -26,8 +28,22 @@ h4 {
   width: 100%;
 }
 
+.app-right {
+  width: 50%;
+}
+
 .app-left {
-  width: 100%;
+  width: 50%;
+}
+
+.app-bottom {
+  width: 50%;
+  border: 1px solid black;
+}
+
+.graph {
+  width: 50%;
+  height: 30px;
 }
 
 .app-stats {

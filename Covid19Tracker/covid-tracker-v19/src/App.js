@@ -8,13 +8,13 @@ import {
   CardContent,
 } from "@material-ui/core";
 import InfoBox from "./InfoBox";
-import Map from "./Map";
 import Table from "./Table";
 import "./App.css";
 import { sortData } from "./utilities";
 import LineGraph from "./LineGraph";
 import "leaflet/dist/leaflet.css";
 import numeral from "numeral";
+import Map from "./Map";
 
 function App() {
   /* //STATE = HOW TO WRITE VARIABLES IN react// */
@@ -32,6 +32,7 @@ function App() {
   //USEEFFECT = runs code based on condition
   //will run once when component loads
   useEffect(() => {
+    console.log("hey");
     fetch(`https://disease.sh/v3/covid-19/all`)
       .then((response) => response.json())
       .then((data) => {
@@ -40,6 +41,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    console.log("hi");
     const getCountriesData = async () => {
       await fetch("https://disease.sh/v3/covid-19/countries")
         .then((response) => response.json())
@@ -79,6 +81,7 @@ function App() {
       });
   };
   console.log("country info pulled.", countryInfo);
+
   /*Header, Title & Select DropDown*/
   return (
     <div class="app">
@@ -134,6 +137,10 @@ function App() {
           <h3>LIVE</h3>
           <h2>Cases By Country</h2>
           <Table countries={tableData} />
+        </CardContent>
+      </Card>
+      <Card class="app-bottom">
+        <CardContent>
           <h2>New Global Cases</h2>
           <LineGraph />
         </CardContent>
