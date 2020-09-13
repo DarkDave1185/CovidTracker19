@@ -30,6 +30,9 @@ const options = {
           format: "MM/DD/YY",
           tooltipFormat: "ll",
         },
+        ticks: {
+          min: 0,
+        },
       },
     ],
     yAxes: [
@@ -38,9 +41,7 @@ const options = {
           display: false,
         },
         ticks: {
-          callback: function (value, index, values) {
-            return numeral(value).format("0a");
-          },
+          beginAtZero: true,
         },
       },
     ],
@@ -53,7 +54,7 @@ const buildChartData = (data, casesType) => {
   for (let date in data.cases) {
     /* data[casesType].forEach((date) => { */
     if (lastDataPoint) {
-      const newDataPoint = {
+      let newDataPoint = {
         x: date,
         y: data[casesType][date] - lastDataPoint,
       };
@@ -79,18 +80,18 @@ function LineGraph({ casesType }) {
         });
     };
     fetchData();
-  }, [casesType]);
+  }, []);
 
   return (
     <div>
       <h3>LineGraph Here</h3>
       {data?.length > 0 && (
         <Line
-          width={100}
-          height={50}
           data={{
             datasets: [
               {
+                label: "Days",
+                data: ["0", "2", "4", "6", "8", "10", "12", "14"],
                 backgroundColor: "#cc1034",
                 borderColor: "orangered",
                 data: data,

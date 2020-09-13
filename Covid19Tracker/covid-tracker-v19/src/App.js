@@ -10,7 +10,7 @@ import {
 import InfoBox from "./InfoBox";
 import Table from "./Table";
 import "./App.css";
-import { sortData } from "./utilities";
+import { sortData, prettyPrintStat } from "./utilities";
 import LineGraph from "./LineGraph";
 import "leaflet/dist/leaflet.css";
 import numeral from "numeral";
@@ -107,21 +107,21 @@ function App() {
           <InfoBox
             class="infoBox"
             title="Cases"
-            cases={countryInfo.todayCases}
+            cases={prettyPrintStat(countryInfo.todayCases)}
             total={countryInfo.cases}
           />
           {/*InfoBox -recovered*/}
           <InfoBox
             class="infoBox"
             title="Recovered"
-            cases={countryInfo.todayRecovered}
+            cases={prettyPrintStat(countryInfo.todayRecovered)}
             total={countryInfo.recovered}
           />
           {/*InfoBox -deaths*/}
           <InfoBox
             class="infoBox"
             title="Deaths"
-            cases={countryInfo.todayDeaths}
+            cases={prettyPrintStat(countryInfo.todayDeaths)}
             total={countryInfo.deaths}
           />
         </div>
@@ -140,7 +140,7 @@ function App() {
         </CardContent>
       </Card>
       <Card class="app-bottom">
-        <CardContent>
+        <CardContent class="graph">
           <h2>New Global Cases</h2>
           <LineGraph />
         </CardContent>
