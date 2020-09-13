@@ -108,21 +108,21 @@ function App() {
             class="infoBox"
             title="Cases"
             cases={prettyPrintStat(countryInfo.todayCases)}
-            total={countryInfo.cases}
+            total={numeral(countryInfo.cases).format("0,0")}
           />
           {/*InfoBox -recovered*/}
           <InfoBox
             class="infoBox"
             title="Recovered"
             cases={prettyPrintStat(countryInfo.todayRecovered)}
-            total={countryInfo.recovered}
+            total={numeral(countryInfo.recovered).format("0,0")}
           />
           {/*InfoBox -deaths*/}
           <InfoBox
             class="infoBox"
             title="Deaths"
             cases={prettyPrintStat(countryInfo.todayDeaths)}
-            total={countryInfo.deaths}
+            total={numeral(countryInfo.deaths).format("0,0")}
           />
         </div>
       </div>

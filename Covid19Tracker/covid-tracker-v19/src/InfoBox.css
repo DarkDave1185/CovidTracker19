@@ -14,7 +14,15 @@ infoBox-title {
 }
 
 infoBox-cases {
+  color: orangered;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
 }
 
 infoBox-total {
+  color: rgb(0, 60, 255);
+  font-weight: 700 !important;
+  margin-top: 15px !important;
+  font-size: 0.8rem !important;
 }

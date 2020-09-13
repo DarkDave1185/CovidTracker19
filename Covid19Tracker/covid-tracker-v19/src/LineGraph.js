@@ -3,6 +3,7 @@ import { Line } from "react-chartjs-2";
 import numeral from "numeral";
 
 const options = {
+  labels: ["2", "4", "6", "8"],
   legend: {
     display: true,
   },
@@ -31,7 +32,8 @@ const options = {
           tooltipFormat: "ll",
         },
         ticks: {
-          min: 0,
+          suggestedMin: 0,
+          suggestedMax: 100,
         },
       },
     ],
@@ -41,7 +43,8 @@ const options = {
           display: false,
         },
         ticks: {
-          beginAtZero: true,
+          suggestedMin: 0,
+          suggestedMax: 100,
         },
       },
     ],
