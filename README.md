@@ -22,4 +22,4 @@ Click on your country or country in question on the map to see the daily cases, 
 
 ## ScreenShots
 
-![covid-tracker]()
+![covid-tracker](https://raw.githubusercontent.com/DarkDave1185/CovidTracker19/master/public/screenshot.PNG)
