@@ -4,16 +4,16 @@ import numeral from "numeral";
 
 const casesCircleColor = {
   cases: {
-    rgb: "rgb(204, 16, 52)",
-    multiplier: 400,
+    rgb: "rgb(239, 251, 67)",
+    multiplier: 800,
   },
   recovered: {
     rgb: "rgb(125, 215, 29)",
-    multiplier: 600,
+    multiplier: 1200,
   },
   deaths: {
-    rgb: "rgb(251, 68, 67)",
-    multiplier: 1000,
+    rgb: "rgb(204, 16, 52)",
+    multiplier: 2000,
   },
 };
 
@@ -60,10 +60,10 @@ export const showDataOnMap = (data, casesType = "cases") =>
             Cases: {numeral(country.cases).format("0,0")}
           </div>
           <div class="popup_recovered">
-            Recovered: {numeral(country.cases).format("0,0")}
+            Recovered: {numeral(country.recovered).format("0,0")}
           </div>
           <div class="popup_deaths">
-            Deaths: {numeral(country.cases).format("0,0")}
+            Deaths: {numeral(country.deaths).format("0,0")}
           </div>
         </div>
       </Popup>

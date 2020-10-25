@@ -10,8 +10,7 @@ import {
 import InfoBox from "./InfoBox";
 import Table from "./Table";
 import "./App.css";
-import { sortData, prettyPrintStat } from "./utilities";
-import LineGraph from "./LineGraph";
+import { sortData } from "./utilities";
 import "leaflet/dist/leaflet.css";
 import numeral from "numeral";
 import Map from "./Map";
@@ -105,23 +104,30 @@ function App() {
         <div class="app-stats">
           {/*InfoBox -cases*/}
           <InfoBox
+            isRed
+            active={casesType === "cases"}
+            onClick={(e) => setCasesType("cases")}
             class="infoBox"
-            title="Cases"
-            cases={prettyPrintStat(countryInfo.todayCases)}
+            title="Cases Today"
+            cases={numeral(countryInfo.todayCases).format("0.0a")}
             total={numeral(countryInfo.cases).format("0,0")}
           />
           {/*InfoBox -recovered*/}
           <InfoBox
+            active={casesType === "recovered"}
+            onClick={(e) => setCasesType("recovered")}
             class="infoBox"
-            title="Recovered"
-            cases={prettyPrintStat(countryInfo.todayRecovered)}
+            title="Recovered Today"
+            cases={numeral(countryInfo.todayRecovered).format("0,0")}
             total={numeral(countryInfo.recovered).format("0,0")}
           />
           {/*InfoBox -deaths*/}
           <InfoBox
+            active={casesType === "deaths"}
+            onClick={(e) => setCasesType("deaths")}
             class="infoBox"
-            title="Deaths"
-            cases={prettyPrintStat(countryInfo.todayDeaths)}
+            title="Deaths Today"
+            cases={numeral(countryInfo.todayDeaths).format("0.0a")}
             total={numeral(countryInfo.deaths).format("0,0")}
           />
         </div>
@@ -130,19 +136,21 @@ function App() {
       {/*Graph*/}
       {/*Map*/}
       <div class="app-right">
-        <Map center={mapCenter} zoom={mapZoom} countries={mapCountries} />
+        <Map
+          center={mapCenter}
+          zoom={mapZoom}
+          countries={mapCountries}
+          casesType={casesType}
+        />
       </div>
       <Card class="app-left">
         <CardContent>
-          <h3>LIVE</h3>
-          <h2>Cases By Country</h2>
+          <h2>
+            <strong>LIVE:</strong>
+            <h4>Cases By Country</h4>
+          </h2>
+
           <Table countries={tableData} />
-        </CardContent>
-      </Card>
-      <Card class="app-bottom">
-        <CardContent class="graph">
-          <h2>New Global Cases</h2>
-          <LineGraph />
         </CardContent>
       </Card>
     </div>

@@ -4,23 +4,28 @@
   background-color: rgb(235, 236, 236);
   border-radius: 50px;
   justify-content: center;
+  cursor: pointer;
 }
 
 .infoBox:not(:last-child) {
   margin-right: 15px;
 }
-
-infoBox-title {
+.infoBox:hover {
+  border-top: 10px solid green;
 }
 
-infoBox-cases {
+.infoBox-cases--green {
+  color: rgb(125, 215, 29);
+}
+
+.infoBox-cases {
   color: orangered;
   font-weight: 600;
   margin-bottom: 0.5rem;
   font-size: 1.75rem;
 }
 
-infoBox-total {
+.infoBox-total {
   color: rgb(0, 60, 255);
   font-weight: 700 !important;
   margin-top: 15px !important;

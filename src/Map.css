@@ -1,5 +1,5 @@
 .map {
-  height: 400px;
+  height: 450px;
   background-color: rgb(148, 150, 150);
   padding: 1rem;
   border-radius: 15px;
@@ -42,6 +42,6 @@
 
 . {
   color: rgb(204, 16, 52), #cc1034; /*cases*/
-  color: #7dd71d; /*recovered*/
-  color: rgb(251, 68, 67); /*death*/
+  color: rgb(125, 215, 29); /*recovered*/
+  color: rgb(239, 251, 67); /*death*/
 }

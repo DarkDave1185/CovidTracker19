@@ -4,11 +4,17 @@
 
 body {
   background-color: rgb(104, 103, 103);
+  background-image: url("https://tenor.com/view/earth-spin-galaxy-outer-space-gif-15611947");
 }
 
 h1,
 h4 {
   color: antiquewhite;
+}
+
+h2 {
+  color: red;
+  text-shadow: black 2px 2px;
 }
 
 .app {
@@ -17,6 +23,7 @@ h4 {
   flex-wrap: wrap;
   justify-content: space-evenly;
   padding: 20px;
+  background-image: url(https://tenor.com/view/earth-spin-galaxy-outer-space-gif-15611947);
 }
 
 .app-header {
@@ -62,7 +69,15 @@ h4 {
 @media (max-width: 750px) {
   .app {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-direction: column;
+  }
+
+  .app-right {
+    width: 100%;
+  }
+
+  .app-left {
+    width: 100%;
   }
 }
