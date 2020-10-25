@@ -100,7 +100,6 @@ function App() {
             </Select>
           </FormControl>
         </div>
-        <h4> Building Covid Tracker for Portfolio </h4>
         <div class="app-stats">
           {/*InfoBox -cases*/}
           <InfoBox
